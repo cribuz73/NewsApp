@@ -20,7 +20,13 @@ public class News {
 
     private String mUrl;
 
+    public News(String vTitle, String vCategory, String vDate, String vUrl) {
 
+        mNews_title = vTitle;
+        mNews_category = vCategory;
+        mNews_date = vDate;
+        mUrl = vUrl;
+    }
 
     public News(String vTitle, String vCategory, String vDate, String vThumbnail, String vUrl) {
 
@@ -38,9 +44,7 @@ public class News {
         return mNews_title;
     }
 
-    public String getNews_category() {
-        return mNews_category;
-    }
+    public String getNews_category() {return mNews_category;  }
 
     public String getNews_date() {
         return mNews_date;
@@ -54,6 +58,9 @@ public class News {
         return mUrl;
     }
 
+    public boolean hasImage() {
+        return mNews_thumbnail != null;
+    }
 
 }
 

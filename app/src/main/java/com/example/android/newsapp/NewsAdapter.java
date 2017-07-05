@@ -46,6 +46,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         String thumbnail_url = currentNews.getNews_thumbnail();
 
 
+
         TextView titleTextView = (TextView) listView.findViewById(R.id.title);
         titleTextView.setText(title);
 
@@ -60,12 +61,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         ImageView imageView = (ImageView) listView.findViewById(R.id.image);
 
-        if (thumbnail_url != null) {
+        if (currentNews.hasImage()) {
+
             Glide.with(getContext()).load(thumbnail_url).into(imageView);
+            imageView.setVisibility(imageView.VISIBLE);
         }
         else {
             imageView.setVisibility(imageView.GONE);
         }
+
         return listView;
     }
 
