@@ -23,7 +23,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
     public NewsAdapter(Activity context, ArrayList<News> news) {
         super(context, 0, news);
         Log.i(LOG_TAG, "TEST : using NEWS ADAPTER");
-
     }
 
     @Override
@@ -38,7 +37,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
 
         Log.i(LOG_TAG, "TEST : populating ListView");
-
 
         News currentNews = getItem(position);
 
@@ -61,7 +59,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
 
         ImageView imageView = (ImageView) listView.findViewById(R.id.image);
-        Glide.with(getContext()).load(thumbnail_url).into(imageView);
+
+        if (thumbnail_url != null) {
+            Glide.with(getContext()).load(thumbnail_url).into(imageView);
+        }
+        else {
+            imageView.setVisibility(imageView.GONE);
+        }
 
         return listView;
     }

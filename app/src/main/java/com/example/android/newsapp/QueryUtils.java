@@ -123,7 +123,8 @@ public class QueryUtils {
         //extracting the JSON response//
 
         try {
-            JSONObject baseJsonResponse = new JSONObject(newsJSON);
+            JSONObject baseJson = new JSONObject(newsJSON);
+            JSONObject baseJsonResponse = baseJson.getJSONObject("response");
             Log.i(LOG_TAG, "TEST : extracting the JSON");
 
             if (baseJsonResponse.has("results")) {
@@ -138,60 +139,61 @@ public class QueryUtils {
                 for (int i = 0; i < resultsArray.length(); i++) {
                     JSONObject currentNews = resultsArray.getJSONObject(i);
 
-                    String title = currentNews.getString("webTitle");
 
+                    String title;
+                    if (currentNews.has("webTitle")) {
+                        title = currentNews.getString("webTitle");
+                    }else{
+                        title = " ";
+                    }
                     Log.i(LOG_TAG, title);
 
-                    String category = currentNews.getString("sectionId");
-                    String date = currentNews.getString("webPublicationDate");
-                    String url = currentNews.getString("webUrl");
+                    String category;
+                    if (currentNews.has("sectionId")) {
+                        category = currentNews.getString("sectionId");
+                    }else{
+                        category = " ";
+                    }
+                    Log.i(LOG_TAG, category);
+
+                    String date;
+                    if (currentNews.has("webPublicationDate")) {
+                        date = currentNews.getString("webPublicationDate");
+                    }else{
+                        date = " ";
+                    }
+                    Log.i(LOG_TAG, date);
+
+                    String thumbnail_url;
+                    if (currentNews.has("fields")) {
+                            JSONObject fields = currentNews.getJSONObject("fields");
+                            thumbnail_url = fields.getString("thumbnail");
+                        } else {
+                            thumbnail_url = " ";
+                        }
+                        Log.i(LOG_TAG, thumbnail_url);
 
 
-                    JSONObject fields = currentNews.getJSONObject("fields");
-                    String thumbnail_url = fields.getString("thumbnail");
-
-                 //   String year = "Year: ";
-                  //  if (volumeInfo.has("publishedDate")) {
-                   //     year = year + volumeInfo.getString("publishedDate");
-                   // } else {
-                    //    year = year + " ";
-                    //}
-
-                   // String publisher = "Publisher: ";
-                   // if (volumeInfo.has("publisher")) {
-                   //     publisher = publisher + volumeInfo.getString("publisher");
-                    //} else {
-                     //   publisher = publisher + " ";
-                    //}
-
-                   // String subtitle = " ";
-                    //if (volumeInfo.has("subtitle")) {
-                     //   subtitle = volumeInfo.getString("subtitle");
-                    //} else {
-                     //   subtitle = " ";
-                    //}
-                    //String author = "Author: ";
-                    //if (volumeInfo.has("authors")) {
-                     //   JSONArray authorsArray = volumeInfo.getJSONArray("authors");
-                     //   for (int j = 0; j < authorsArray.length(); j++) {
-                      //      author = author + authorsArray.getString(j) + ", ";
-                       // }
-                        //author = author.substring(0, author.length() - 1);
-
-                   // } else {
-                    //    author = "No authors found";
-                    //}
+                    String url;
+                    if (currentNews.has("webUrl")) {
+                        url = currentNews.getString("webUrl");
+                    }else{
+                        url = " ";
+                    }
+                    Log.i(LOG_TAG, url);
 
                     News oneNews = new News(title, category, date, thumbnail_url, url);
                     news.add(oneNews);
                 }
             } else {
+                Log.i(LOG_TAG, "TEST : extracting the JSON - NO RESULTS");
+
                 return null;
             }
 
         } catch (JSONException e) {
 
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         }
         return news;
     }

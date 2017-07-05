@@ -154,17 +154,14 @@ public class MainActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("section", category);
         uriBuilder.appendQueryParameter("from-date", date);
-        uriBuilder.appendQueryParameter("show-fields","starRating");
-        uriBuilder.appendQueryParameter("show-fields","headline");
-        uriBuilder.appendQueryParameter("show-fields","thumbnail");
-        uriBuilder.appendQueryParameter("show-fields","short-url");
+        uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("show-refinements", "all");
         uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("api-key", "01210751-b2cf-48a9-87e4-51ed19cccd43");
 
         String exUrl = uriBuilder.toString();
-        Log.i(LOG_TAG, exUrl);
 
+        Log.i(LOG_TAG, exUrl);
 
         return new NewsLoader(this, uriBuilder.toString());
     }
@@ -210,4 +207,6 @@ public class MainActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
