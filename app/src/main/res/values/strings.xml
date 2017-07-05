@@ -16,13 +16,44 @@
     <string name="settings_category_default" translatable="false">news</string>
 
     <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_art_label">Art and Design</string>
+    <string name="settings_category_art_value" translatable="false">artanddesign</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_books_label">Books</string>
+    <string name="settings_category_books_value" translatable="false">books</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_business_label">Business</string>
+    <string name="settings_category_business_value" translatable="false">business</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_culture_label">Culture</string>
+    <string name="settings_category_culture_value" translatable="false">culture</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_fashion_label">Fashion</string>
+    <string name="settings_category_fashion_value" translatable="false">fashion</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_film_label">Film</string>
+    <string name="settings_category_film_value" translatable="false">film</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
     <string name="settings_category_news_label">News</string>
     <string name="settings_category_news_value" translatable="false">news</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_science_label">Science</string>
+    <string name="settings_category_science_value" translatable="false">science</string>
 
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
     <string name="settings_category_sport_label">Sport</string>
     <string name="settings_category_sport_value" translatable="false">sport</string>
 
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_category_travel_label">Travel</string>
+    <string name="settings_category_travel_value" translatable="false">travel</string>
 
 
 

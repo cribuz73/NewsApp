@@ -1,7 +1,6 @@
 package com.example.android.newsapp;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +17,15 @@ import java.util.ArrayList;
  */
 
 public class NewsAdapter extends ArrayAdapter<News> {
-    private static final String LOG_TAG = NewsAdapter.class.getSimpleName();
+    private static final String DATE_SEPARATOR = "T";
 
     public NewsAdapter(Activity context, ArrayList<News> news) {
         super(context, 0, news);
-        Log.i(LOG_TAG, "TEST : using NEWS ADAPTER");
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Log.i(LOG_TAG, "TEST : starting GET View");
 
         View listView = convertView;
         if (listView == null) {
@@ -36,13 +33,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
                     R.layout.news_list_item, parent, false);
         }
 
-        Log.i(LOG_TAG, "TEST : populating ListView");
-
         News currentNews = getItem(position);
 
         String title = currentNews.getNewsTitle();
         String category = currentNews.getNews_category();
         String date = currentNews.getNews_date();
+        String finalDate;
+        String[] parts = date.split(DATE_SEPARATOR);
+        finalDate = parts[0];
+
         String thumbnail_url = currentNews.getNews_thumbnail();
 
         TextView titleTextView = (TextView) listView.findViewById(R.id.title);
@@ -52,9 +51,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         categoryTextView.setText(category);
 
         TextView dateTextView = (TextView) listView.findViewById(R.id.date);
-        dateTextView.setText(date);
-
-        Log.i(LOG_TAG, "TEST : updating textViews");
+        dateTextView.setText(finalDate);
 
 
         ImageView imageView = (ImageView) listView.findViewById(R.id.image);
@@ -63,8 +60,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
             Glide.with(getContext()).load(thumbnail_url).into(imageView);
             imageView.setVisibility(imageView.VISIBLE);
-        }
-        else {
+        } else {
             imageView.setVisibility(imageView.GONE);
         }
 

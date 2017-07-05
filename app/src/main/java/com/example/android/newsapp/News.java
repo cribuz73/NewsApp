@@ -1,14 +1,10 @@
 package com.example.android.newsapp;
 
-import android.util.Log;
-
 /**
  * Created by Cristi on 7/4/2017.
  */
 
 public class News {
-
-    private static final String LOG_TAG = News.class.getSimpleName();
 
     private String mNews_title;
 
@@ -29,9 +25,6 @@ public class News {
     }
 
     public News(String vTitle, String vCategory, String vDate, String vThumbnail, String vUrl) {
-
-        Log.i(LOG_TAG, "TEST : init NEWS object");
-
 
         mNews_title = vTitle;
         mNews_category = vCategory;

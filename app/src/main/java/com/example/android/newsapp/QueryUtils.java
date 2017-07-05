@@ -27,10 +27,8 @@ public class QueryUtils {
 
     public static ArrayList<News> fetchNewsdata(String requestUrl) {
 
-        // Create URL object
         URL url = createUrl(requestUrl);
 
-        // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
@@ -38,17 +36,13 @@ public class QueryUtils {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
-        // Extract relevant fields from the JSON response and create an {@link Event} object
         ArrayList<News> news1 = extractFeatureFromJson(jsonResponse);
 
-        // Return the {@link Event}
         return news1;
 
     }
 
-    /**
-     * Returns new URL object from the given string URL.
-     */
+
     private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
@@ -59,9 +53,7 @@ public class QueryUtils {
         return url;
     }
 
-    /**
-     * Make an HTTP request to the given URL and return a String as the response.
-     */
+
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -115,17 +107,13 @@ public class QueryUtils {
     private static ArrayList<News> extractFeatureFromJson(String newsJSON) {
         ArrayList<News> news = new ArrayList<>();
 
-        // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
 
-        //extracting the JSON response//
-
         try {
             JSONObject baseJson = new JSONObject(newsJSON);
             JSONObject baseJsonResponse = baseJson.getJSONObject("response");
-            Log.i(LOG_TAG, "TEST : extracting the JSON");
 
             if (baseJsonResponse.has("results")) {
 
@@ -133,7 +121,7 @@ public class QueryUtils {
 
                 int a = resultsArray.length();
                 String l = String.valueOf(a);
-                Log.i(LOG_TAG, l );
+                Log.i(LOG_TAG, l);
 
 
                 for (int i = 0; i < resultsArray.length(); i++) {
@@ -143,44 +131,39 @@ public class QueryUtils {
                     String title;
                     if (currentNews.has("webTitle")) {
                         title = currentNews.getString("webTitle");
-                    }else{
+                    } else {
                         title = " ";
                     }
-                    Log.i(LOG_TAG, title);
 
                     String category = "Category: ";
                     if (currentNews.has("sectionId")) {
                         category = category + currentNews.getString("sectionId");
-                    }else{
+                    } else {
                         category = " ";
                     }
-                    Log.i(LOG_TAG, category);
 
                     String date;
                     if (currentNews.has("webPublicationDate")) {
                         date = currentNews.getString("webPublicationDate");
-                    }else{
+                    } else {
                         date = " ";
                     }
                     Log.i(LOG_TAG, date);
 
                     String thumbnail_url;
                     if (currentNews.has("fields")) {
-                            JSONObject fields = currentNews.getJSONObject("fields");
-                            thumbnail_url = fields.getString("thumbnail");
-                        } else {
-                            thumbnail_url = " ";
-                        }
-                        Log.i(LOG_TAG, thumbnail_url);
-
+                        JSONObject fields = currentNews.getJSONObject("fields");
+                        thumbnail_url = fields.getString("thumbnail");
+                    } else {
+                        thumbnail_url = " ";
+                    }
 
                     String url;
                     if (currentNews.has("webUrl")) {
                         url = currentNews.getString("webUrl");
-                    }else{
+                    } else {
                         url = " ";
                     }
-                    Log.i(LOG_TAG, url);
 
                     News oneNews = new News(title, category, date, thumbnail_url, url);
                     news.add(oneNews);

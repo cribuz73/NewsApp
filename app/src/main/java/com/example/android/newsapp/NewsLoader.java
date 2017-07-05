@@ -2,7 +2,6 @@ package com.example.android.newsapp;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -16,10 +15,8 @@ public class NewsLoader extends AsyncTaskLoader<ArrayList<News>> {
     /**
      * Tag for log messages
      */
-    private static final String LOG_TAG = NewsLoader.class.getName();
 
     private String mUrl;
-
 
 
     public NewsLoader(Context context, String url) {
@@ -29,7 +26,6 @@ public class NewsLoader extends AsyncTaskLoader<ArrayList<News>> {
 
     @Override
     protected void onStartLoading() {
-        Log.i(LOG_TAG, "TEST : using onStartLoading");
 
         forceLoad();
     }
