@@ -66,7 +66,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         else {
             imageView.setVisibility(imageView.GONE);
         }
-
         return listView;
     }
 
