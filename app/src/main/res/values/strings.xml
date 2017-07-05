@@ -16,7 +16,7 @@
     <string name="settings_category_default" translatable="false">news</string>
 
     <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
-    <string name="settings_category_news_label">All</string>
+    <string name="settings_category_news_label">News</string>
     <string name="settings_category_news_value" translatable="false">news</string>
 
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->

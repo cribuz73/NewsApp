@@ -45,8 +45,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         String date = currentNews.getNews_date();
         String thumbnail_url = currentNews.getNews_thumbnail();
 
-
-
         TextView titleTextView = (TextView) listView.findViewById(R.id.title);
         titleTextView.setText(title);
 

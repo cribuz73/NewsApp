@@ -148,9 +148,9 @@ public class QueryUtils {
                     }
                     Log.i(LOG_TAG, title);
 
-                    String category;
+                    String category = "Category: ";
                     if (currentNews.has("sectionId")) {
-                        category = currentNews.getString("sectionId");
+                        category = category + currentNews.getString("sectionId");
                     }else{
                         category = " ";
                     }

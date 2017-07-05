@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 /**
  * Created by Cristi on 7/4/2017.
@@ -14,10 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity{
 
+    private static final String LOG_TAG = SettingsActivity.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
+        Log.i(LOG_TAG, "TEST: starting onCreate in Settings");
     }
 
     public static class NewsPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener{
@@ -38,6 +43,9 @@ public class SettingsActivity extends AppCompatActivity{
 
             Preference words = findPreference(getString(R.string.settings_words_key));
             bindPreferenceSummaryToValue(words);
+
+            Log.i(LOG_TAG, "TEST : ADD preferences from RES");
+
         }
 
         @Override
