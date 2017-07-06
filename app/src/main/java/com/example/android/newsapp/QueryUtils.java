@@ -39,9 +39,7 @@ public class QueryUtils {
         ArrayList<News> news1 = extractFeatureFromJson(jsonResponse);
 
         return news1;
-
     }
-
 
     private static URL createUrl(String stringUrl) {
         URL url = null;
